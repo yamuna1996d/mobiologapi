@@ -44,18 +44,33 @@ app.post("/register",async (req,res)=>{
     }
 });
 
-app.post("/login",async (req,res)=>{
+app.get("/login",async(req,res)=>{
     try {
-        const emails = req.body.email;
-        const pass = req.body.password;
-        const useremail = await Register.findOne({email:emails});
-        if (useremail.password == pass ) {
-            res.status(201).render("Welcome");
-        } else {
-            res.send("Invalid Login Credentials");
-        }
+        var searchuser = req.body.usern;
+        var searchpassword = req.body.pass;
+        // Register.find({
+        //     $and: [
+        //         {
+        //             "email": searchuser
+        //         },
+        //         {
+        //             "password": searchpassword
+        //         }
+        //     ]
+        // }, (error, data) => {
+        //     if (error) {
+        //         throw error;
+        //     }
+        //     if (data.length > 0) {
+        //         res.render("Welcome");
+        //     }
+        //     else {
+        //         res.json({ "status": "Failed" });
+        //     }
+        // });
     } catch (error) {
-        res.status(400).send("Invalid Email or Password");
+        console.log(error);
+        res.status(500).send(error);
     }
 });
 
