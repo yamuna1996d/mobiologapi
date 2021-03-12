@@ -35,10 +35,10 @@ app.get("/",(req,res)=>{
 app.post("/register",async (req,res)=>{
     try {
             const reg = new Register(req.body);
-            var username = res.userName;
+            
             const registed =await reg.save();
             console.log(registed);
-                res.status(201).send("<center><h1> Welcome To Mobiotics Your Data is Stored in MongoDb </h1></center>",username);
+                res.status(201).send("<center><h1> Welcome To Mobiotics Your Data is Stored in MongoDb </h1></center>");
              
         
     } catch (error) {
