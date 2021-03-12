@@ -62,7 +62,7 @@ app.post("/login",async(req,res)=>{
                 throw error;
             }
             if (data.length > 0) {
-                res.render("Welcome.html");
+                res.render("Welcome");
             }
             else {
                 res.json({ "status": "Failed" });
