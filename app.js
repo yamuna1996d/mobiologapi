@@ -29,7 +29,7 @@ mongoose.connect("mongodb+srv://usserdb123:usserdb123@cluster0.opis6.mongodb.net
 });
 
 app.get("/",(req,res)=>{
-    res.send("Hai");
+    res.render("index");
 });
 
 app.post("/register",async (req,res)=>{
@@ -44,33 +44,18 @@ app.post("/register",async (req,res)=>{
     }
 });
 
-app.post("/login",async(req,res)=>{
+app.post("/login",async (req,res)=>{
     try {
-        var searchuser = req.body.usern;
-        var searchpassword = req.body.pass;
-        Register.find({
-            $and: [
-                {
-                    "email": searchuser
-                },
-                {
-                    "password": searchpassword
-                }
-            ]
-        }, (error, data) => {
-            if (error) {
-                throw error;
-            }
-            if (data.length > 0) {
-                res.render("Welcome");
-            }
-            else {
-                res.json({ "status": "Failed" });
-            }
-        });
+        const emails = req.body.email;
+        const pass = req.body.password;
+        const useremail = await Register.findOne({email:emails});
+        if (useremail.password == pass ) {
+            res.status(201).render("Welcome");
+        } else {
+            res.send("Invalid Login Credentials");
+        }
     } catch (error) {
-        console.log(error);
-        res.status(500).send(error);
+        res.status(400).send("Invalid Email or Password");
     }
 });
 
