@@ -37,11 +37,11 @@ app.post("/register",async (req,res)=>{
             const reg = new Register(req.body);
             const registed =await reg.save();
             console.log(registed);
-                res.status(201).send("<h1>Welcome </h1>");
+                res.status(201).send("<center><h1> Welcome To Mobiotics Your Data is Stored in MongoDb </h1></center>");
              
         
     } catch (error) {
-        res.status(400).send(error);
+        res.status(400).send("<h1>Values Are Not Stored</h1>",error);
     }
 });
 
