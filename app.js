@@ -42,7 +42,7 @@ app.post("/register",async (req,res)=>{
              
         
     } catch (error) {
-        res.status(400).send("<h1>Values Are Not Stored</h1>",error);
+        res.status(400).send("<h1>Values Are Not Stored</h1>error");
     }
 });
 
