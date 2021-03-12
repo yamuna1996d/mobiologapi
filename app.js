@@ -53,7 +53,7 @@ app.post("/login",async(req,res)=>{
                 throw error;
             }
             if (data.length > 0) {
-                res.json({ "status": "Success" });
+                res.redirect("Welcome.html");
             }
             else {
                 res.json({ "status": "Failed" });
