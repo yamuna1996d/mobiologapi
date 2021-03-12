@@ -3,7 +3,16 @@ const mongoose = require("mongoose");
 const parser = require("body-parser");
 const app =express();
 const Register = require("./models/UserSchema");
+const path = require('path');
+app.set('view engine', 'hbs')// general config
 
+
+console.log(path.join(__dirname,"../backend/public"));
+const stat= path.join(__dirname,"../backend/public");
+const template= path.join(__dirname,"../backend/views");
+app.set('views',template);
+app.use(express.static(stat));
+app.use(express.json());
 app.use(parser.urlencoded({extended:false}));
 //app.use(express.json());
 mongoose.connect("mongodb+srv://usserdb123:usserdb123@cluster0.opis6.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",{
@@ -53,7 +62,7 @@ app.post("/login",async(req,res)=>{
                 throw error;
             }
             if (data.length > 0) {
-                res.redirect("Welcome.html");
+                res.redirect("Welcome");
             }
             else {
                 res.json({ "status": "Failed" });
