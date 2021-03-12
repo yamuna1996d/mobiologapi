@@ -37,9 +37,7 @@ app.post("/register",async (req,res)=>{
             const reg = new Register(req.body);
             const registed =await reg.save();
             console.log(registed);
-            if(registed){
                 res.status(201).render("/register");
-            }
              
         
     } catch (error) {
