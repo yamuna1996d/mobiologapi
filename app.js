@@ -38,7 +38,7 @@ app.post("/register",async (req,res)=>{
             
             const registed =await reg.save();
             console.log(registed);
-                res.status(201).send("<center><h1 style='color:green;'> Welcome To Mobiotics Your Data is Stored in MongoDb </h1></center>");
+                res.status(201).send("<center><h1 style='color:green;'> Welcome To Mobiotics Your Data is Stored in MongoDb </h1><button href='sigupform.html'>Try Login Know</button></center>");
              
         
     } catch (error) {
@@ -64,7 +64,7 @@ app.get("/login",async(req,res)=>{
                 throw error;
             }
             if (data.length > 0) {
-                res.send("<h1 style='color:green;' >Welcome to Mobiotics</h1>");
+                res.send("<<h1 style='color:green;' >Welcome to Mobiotics</h1>");
             }
             else {
                 res.send("<h1 style='color:red;' >Check network and Login Credentials....</h1>");
