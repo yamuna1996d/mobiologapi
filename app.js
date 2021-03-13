@@ -38,11 +38,11 @@ app.post("/register",async (req,res)=>{
             
             const registed =await reg.save();
             console.log(registed);
-                res.status(201).send("<center><h1> Welcome To Mobiotics Your Data is Stored in MongoDb </h1></center>");
+                res.status(201).send("<center><h1 style='color:green;'> Welcome To Mobiotics Your Data is Stored in MongoDb </h1></center>");
              
         
     } catch (error) {
-        res.status(400).send("<h1 style='color:green;' >Values Are Not Stored Because email is already stored earlier!!</h1>");
+        res.status(400).send("<h1 style='color:red;' >Values Are Not Stored Because email is already stored earlier!!</h1>");
     }
 });
 
@@ -50,26 +50,26 @@ app.get("/login",async(req,res)=>{
     try {
         var searchuser = req.body.usern;
         var searchpassword = req.body.pass;
-        // Register.find({
-        //     $and: [
-        //         {
-        //             "email": searchuser
-        //         },
-        //         {
-        //             "password": searchpassword
-        //         }
-        //     ]
-        // }, (error, data) => {
-        //     if (error) {
-        //         throw error;
-        //     }
-        //     if (data.length > 0) {
-        //         res.render("Welcome");
-        //     }
-        //     else {
-        //         res.json({ "status": "Failed" });
-        //     }
-        // });
+        Register.find({
+            $and: [
+                {
+                    "email": searchuser
+                },
+                {
+                    "password": searchpassword
+                }
+            ]
+        }, (error, data) => {
+            if (error) {
+                throw error;
+            }
+            if (data.length > 0) {
+                res.send("<h1 style='color:green;' >Welcome to Mobiotics</h1>");
+            }
+            else {
+                res.send("<h1 style='color:red;' >Check network and Login Credentials....</h1>");
+            }
+        });
     } catch (error) {
         console.log(error);
         res.status(500).send(error);
