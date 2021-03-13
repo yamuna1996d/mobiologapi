@@ -42,7 +42,7 @@ app.post("/register",async (req,res)=>{
              
         
     } catch (error) {
-        res.status(400).send("<h1>Values Are Not Stored Because email is already stored earlier!!</h1>");
+        res.status(400).send("<h1 style='color:green;' >Values Are Not Stored Because email is already stored earlier!!</h1>");
     }
 });
 
