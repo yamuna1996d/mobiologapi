@@ -38,11 +38,11 @@ app.post("/register",async (req,res)=>{
             
             const registed =await reg.save();
             console.log(registed);
-                res.status(201).send("<center><h1 style='color:green;'> Welcome To Mobiotics Your Data is Stored in MongoDb </h1><button href='sigupform.html'>Try Login Know</button></center>");
+                res.status(201).send("<center><h1 style='color:green;'> Welcome To Mobiotics Your Data is Stored in MongoDb </h1></center>");
              
         
     } catch (error) {
-        res.status(400).send("<h1 style='color:red;' >Values Are Not Stored Because email is already stored earlier!!</h1>");
+        res.status(400).send("<center><h1 style='color:red;' >Values Are Not Stored Because email is already stored earlier!!</h1></center>");
     }
 });
 
@@ -64,10 +64,10 @@ app.get("/login",async(req,res)=>{
                 throw error;
             }
             if (data.length > 0) {
-                res.send("<<h1 style='color:green;' >Welcome to Mobiotics</h1>");
+                res.send("<center><h1 style='color:green;' >Welcome to Mobiotics</h1></center>");
             }
             else {
-                res.send("<h1 style='color:red;' >Check network and Login Credentials....</h1>");
+                res.send("<center><h1 style='color:red;' >Check network and Login Credentials....</h1></center>");
             }
         });
     } catch (error) {
